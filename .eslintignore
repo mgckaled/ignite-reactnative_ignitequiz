@@ -1,0 +1,6 @@
+.prettierignore
+.gitignore
+*.json
+*.png
+*.svg
+*.mp3

@@ -18,6 +18,6 @@ export const THEME = {
   },
   FONTS: {
     REGULAR: "Roboto_400Regular",
-    BOLD: "Roboto_700Bold"
-  }
-};
+    BOLD: "Roboto_700Bold",
+  },
+}
