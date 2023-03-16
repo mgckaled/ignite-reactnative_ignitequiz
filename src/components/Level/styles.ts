@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     borderColor: "red",
     justifyContent: "center",
     alignItems: "center",
-    margin: 6,
+    marginVertical: 6,
+    marginHorizontal: 10,
   },
   title: {
     textTransform: "uppercase",

@@ -1,6 +1,11 @@
 import { Pressable, PressableProps, Text } from "react-native"
 
-import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated"
 
 import { THEME } from "../../styles/theme"
 import { styles } from "./styles"
@@ -29,11 +34,11 @@ export function Level({ title, type = "EASY", isChecked = false, ...rest }: Prop
   })
 
   function onPressIn() {
-    scale.value = 1.13
+    scale.value = withTiming(1.1, { easing: Easing.ease, duration: 500 })
   }
 
   function onPressOut() {
-    scale.value = 1
+    scale.value = withTiming(1.0, { easing: Easing.ease, duration: 500 })
   }
 
   return (
