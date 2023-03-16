@@ -1,9 +1,9 @@
-import {
-  TouchableOpacity,
-  TouchableOpacityProps,
-  Text,
-  View,
-} from "react-native"
+import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
+
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated"
 
 import { THEME } from "../../styles/theme"
 import { styles } from "./styles"
@@ -26,13 +26,22 @@ export function Level({
   isChecked = false,
   ...rest
 }: Props) {
+  const scale = useSharedValue(1)
+
   const COLOR = TYPE_COLORS[type]
+
+  const animatedContainerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scale: scale.value }],
+    }
+  })
 
   return (
     <TouchableOpacity {...rest}>
-      <View
+      <Animated.View
         style={[
           styles.container,
+          animatedContainerStyle,
           {
             borderColor: COLOR,
             backgroundColor: isChecked ? COLOR : "transparent",
@@ -47,7 +56,7 @@ export function Level({
         >
           {title}
         </Text>
-      </View>
+      </Animated.View>
     </TouchableOpacity>
   )
 }
