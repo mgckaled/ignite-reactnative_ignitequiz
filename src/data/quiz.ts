@@ -17,8 +17,7 @@ export const QUIZ = [
         correct: 0,
       },
       {
-        title:
-          "Sobre a renderização no React, assinale a alternativa incorreta:",
+        title: "Sobre a renderização no React, assinale a alternativa incorreta:",
         alternatives: [
           "Há dois casos comuns em que um componente React é renderizado: a renderização inicial do componente e atualizações de estado.",
           "As re-renderizações normalmente não recriam todos os componentes como a renderização inicial",
@@ -184,8 +183,7 @@ export const QUIZ = [
         correct: 3,
       },
       {
-        title:
-          "Sobre componentização em React Native, escolha a alternativa incorreta:",
+        title: "Sobre componentização em React Native, escolha a alternativa incorreta:",
         alternatives: [
           "Componentizar é uma forma de reaproveitar trechos de código em vários locais do seu código.",
           "Uma das vantagens da componentização é simplificar um componente muito complexo em múltiplos componentes menores, facilitando assim na manutenção do código.",

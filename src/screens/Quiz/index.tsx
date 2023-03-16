@@ -25,9 +25,7 @@ export function Quiz() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [quiz, setQuiz] = useState<QuizProps>({} as QuizProps)
-  const [alternativeSelected, setAlternativeSelected] = useState<null | number>(
-    null
-  )
+  const [alternativeSelected, setAlternativeSelected] = useState<null | number>(null)
 
   const { navigate } = useNavigation()
 

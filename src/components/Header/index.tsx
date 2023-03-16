@@ -20,11 +20,7 @@ export function Header({ title, subtitle, icon: Icon, onPress }: Props) {
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
 
-      <TouchableOpacity
-        style={styles.history}
-        activeOpacity={0.7}
-        onPress={onPress}
-      >
+      <TouchableOpacity style={styles.history} activeOpacity={0.7} onPress={onPress}>
         <Icon size={28} color={THEME.COLORS.GREY_100} />
       </TouchableOpacity>
     </View>

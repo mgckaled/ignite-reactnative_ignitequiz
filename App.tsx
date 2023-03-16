@@ -1,10 +1,6 @@
 import { StatusBar } from "react-native"
 
-import {
-  Roboto_400Regular,
-  Roboto_700Bold,
-  useFonts,
-} from "@expo-google-fonts/roboto"
+import { Roboto_400Regular, Roboto_700Bold, useFonts } from "@expo-google-fonts/roboto"
 
 import { Routes } from "./src/routes"
 
@@ -19,11 +15,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor='transparent'
-        translucent
-      />
+      <StatusBar barStyle='light-content' backgroundColor='transparent' translucent />
 
       <Routes />
     </>

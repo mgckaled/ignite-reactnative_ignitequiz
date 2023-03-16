@@ -1,4 +1,4 @@
-import { View, Text } from "react-native"
+import { Text, View } from "react-native"
 
 import { Option } from "../Option"
 import { styles } from "./styles"
@@ -28,9 +28,7 @@ export function Question({
           key={index}
           title={alternative}
           checked={alternativeSelected === index}
-          onPress={() =>
-            setAlternativeSelected && setAlternativeSelected(index)
-          }
+          onPress={() => setAlternativeSelected && setAlternativeSelected(index)}
         />
       ))}
     </View>

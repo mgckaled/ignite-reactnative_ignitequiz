@@ -66,10 +66,7 @@ export function Home() {
         data={quizzes}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <QuizCard
-            data={item}
-            onPress={() => navigate("quiz", { id: item.id })}
-          />
+          <QuizCard data={item} onPress={() => navigate("quiz", { id: item.id })} />
         )}
         numColumns={2}
         showsVerticalScrollIndicator={false}

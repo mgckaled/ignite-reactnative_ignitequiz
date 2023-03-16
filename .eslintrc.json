@@ -27,7 +27,7 @@
       "error",
       {
         "semi": false,
-        "printWidth": 80,
+        "printWidth": 90,
         "bracketSpacing": true,
         "singleQuote": false,
         "jsxSingleQuote": true,

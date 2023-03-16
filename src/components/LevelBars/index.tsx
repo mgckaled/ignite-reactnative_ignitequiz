@@ -19,12 +19,8 @@ export function LevelBars({ level }: Props) {
   return (
     <View style={styles.bars}>
       <View style={[styles.level, styles.level1, { backgroundColor }]} />
-      <View
-        style={[styles.level, styles.level2, level > 1 && { backgroundColor }]}
-      />
-      <View
-        style={[styles.level, styles.level3, level > 2 && { backgroundColor }]}
-      />
+      <View style={[styles.level, styles.level2, level > 1 && { backgroundColor }]} />
+      <View style={[styles.level, styles.level3, level > 2 && { backgroundColor }]} />
     </View>
   )
 }

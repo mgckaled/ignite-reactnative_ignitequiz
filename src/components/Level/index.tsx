@@ -1,9 +1,6 @@
 import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
 
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-} from "react-native-reanimated"
+import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated"
 
 import { THEME } from "../../styles/theme"
 import { styles } from "./styles"
@@ -20,12 +17,7 @@ type Props = TouchableOpacityProps & {
   type?: keyof typeof TYPE_COLORS
 }
 
-export function Level({
-  title,
-  type = "EASY",
-  isChecked = false,
-  ...rest
-}: Props) {
+export function Level({ title, type = "EASY", isChecked = false, ...rest }: Props) {
   const scale = useSharedValue(1)
 
   const COLOR = TYPE_COLORS[type]
@@ -49,10 +41,7 @@ export function Level({
         ]}
       >
         <Text
-          style={[
-            styles.title,
-            { color: isChecked ? THEME.COLORS.GREY_100 : COLOR },
-          ]}
+          style={[styles.title, { color: isChecked ? THEME.COLORS.GREY_100 : COLOR }]}
         >
           {title}
         </Text>

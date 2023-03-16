@@ -10,11 +10,7 @@ interface Props {
   currentQuestion: number
 }
 
-export function QuizHeader({
-  title,
-  totalOfQuestions,
-  currentQuestion,
-}: Props) {
+export function QuizHeader({ title, totalOfQuestions, currentQuestion }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

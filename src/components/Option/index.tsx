@@ -9,10 +9,7 @@ type Props = TouchableOpacityProps & {
 
 export function Option({ checked, title, ...rest }: Props) {
   return (
-    <TouchableOpacity
-      style={[styles.container, checked && styles.checked]}
-      {...rest}
-    >
+    <TouchableOpacity style={[styles.container, checked && styles.checked]} {...rest}>
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   )
