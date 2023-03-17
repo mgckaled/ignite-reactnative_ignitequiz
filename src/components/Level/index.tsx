@@ -12,6 +12,8 @@ import Animated, {
 import { THEME } from "../../styles/theme"
 import { styles } from "./styles"
 
+const PressableAnimated = Animated.createAnimatedComponent(Pressable)
+
 const TYPE_COLORS = {
   EASY: THEME.COLORS.BRAND_LIGHT,
   HARD: THEME.COLORS.DANGER_LIGHT,
@@ -44,7 +46,7 @@ export function Level({ title, type = "EASY", isChecked = false, ...rest }: Prop
   })
 
   function onPressIn() {
-    scale.value = withTiming(1.1, { easing: Easing.ease, duration: 450 })
+    scale.value = withTiming(1.2, { easing: Easing.ease, duration: 600 })
   }
 
   function onPressOut() {
@@ -52,16 +54,17 @@ export function Level({ title, type = "EASY", isChecked = false, ...rest }: Prop
   }
 
   useEffect(() => {
-    checked.value = withTiming(isChecked ? 1 : 0)
-  }, [isChecked])
+    checked.value = withTiming(isChecked ? 1 : 0, { duration: 600 })
+  }, [checked, isChecked])
 
   return (
-    <Pressable onPressIn={onPressIn} onPressOut={onPressOut} {...rest}>
-      <Animated.View
-        style={[styles.container, { borderColor: COLOR }, animatedContainerStyle]}
-      >
-        <Animated.Text style={[styles.title, animatedTextStyle]}>{title}</Animated.Text>
-      </Animated.View>
-    </Pressable>
+    <PressableAnimated
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      style={[styles.container, { borderColor: COLOR }, animatedContainerStyle]}
+      {...rest}
+    >
+      <Animated.Text style={[styles.title, animatedTextStyle]}>{title}</Animated.Text>
+    </PressableAnimated>
   )
 }
