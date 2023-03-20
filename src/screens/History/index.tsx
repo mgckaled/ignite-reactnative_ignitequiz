@@ -2,12 +2,14 @@ import { useNavigation } from "@react-navigation/native"
 import { HouseLine } from "phosphor-react-native"
 import { useEffect, useState } from "react"
 import { Alert, ScrollView, TouchableOpacity, View } from "react-native"
+import Animated, { Layout, SlideInRight, SlideOutRight } from "react-native-reanimated"
 
 import { Header } from "../../components/Header"
 import { HistoryCard, HistoryProps } from "../../components/HistoryCard"
-
 import { Loading } from "../../components/Loading"
+
 import { historyGetAll, historyRemove } from "../../storage/quizHistoryStorage"
+
 import { styles } from "./styles"
 
 export function History() {
@@ -32,10 +34,8 @@ export function History() {
     Alert.alert("Remover", "Deseja remover esse registro?", [
       {
         text: "Sim",
-
         onPress: () => remove(id),
       },
-
       { text: "Não", style: "cancel" },
     ])
   }
@@ -62,9 +62,16 @@ export function History() {
         showsVerticalScrollIndicator={false}
       >
         {history.map(item => (
-          <TouchableOpacity key={item.id} onPress={() => handleRemove(item.id)}>
-            <HistoryCard data={item} />
-          </TouchableOpacity>
+          <Animated.View
+            key={item.id}
+            entering={SlideInRight}
+            exiting={SlideOutRight}
+            layout={Layout.springify()}
+          >
+            <TouchableOpacity onPress={() => handleRemove(item.id)}>
+              <HistoryCard data={item} />
+            </TouchableOpacity>
+          </Animated.View>
         ))}
       </ScrollView>
     </View>
