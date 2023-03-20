@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   },
   history: {
     padding: 32,
+    flexGrow: 1,
   },
   swipeableContainer: {
     width: "100%",
