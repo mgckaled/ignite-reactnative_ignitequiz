@@ -13,6 +13,7 @@ import Animated, {
   withSequence,
   withTiming,
 } from "react-native-reanimated"
+import { OverlayFeedback } from "../../components/OverlayFeedback"
 
 import { THEME } from "../../styles/theme"
 import { styles } from "./styles"
@@ -200,6 +201,7 @@ export function Quiz() {
 
   return (
     <View style={styles.container}>
+      <OverlayFeedback status={0} />
       <Animated.View style={fixedProgressBarStyles}>
         <Text style={styles.title}>{quiz.title}</Text>
         <ProgressBar total={quiz.questions.length} current={currentQuestion + 1} />
