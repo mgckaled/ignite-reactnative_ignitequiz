@@ -1,5 +1,6 @@
 .prettierignore
 .gitignore
+metro.config.js
 *.json
 *.png
 *.svg
