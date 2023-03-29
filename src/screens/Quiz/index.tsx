@@ -1,6 +1,8 @@
-import { useNavigation, useRoute } from "@react-navigation/native"
 import { useEffect, useState } from "react"
 import { Alert, Text, View } from "react-native"
+
+import { useNavigation, useRoute } from "@react-navigation/native"
+import { Audio } from "expo-av"
 import { Gesture, GestureDetector } from "react-native-gesture-handler"
 import Animated, {
   Easing,
@@ -55,6 +57,17 @@ export function Quiz() {
   const route = useRoute()
   const { id } = route.params as Params
 
+  async function playSound(isCorrect: boolean) {
+    const file = isCorrect
+      ? require("../../assets/correct.mp3")
+      : require("../../assets/wrong.mp3")
+
+    const { sound } = await Audio.Sound.createAsync(file, { shouldPlay: true })
+
+    await sound.setPositionAsync(0)
+    await sound.playAsync()
+  }
+
   function handleSkipConfirm() {
     Alert.alert("Pular", "Deseja realmente pular a questão?", [
       { text: "Sim", onPress: () => handleNextQuestion() },
@@ -91,17 +104,18 @@ export function Quiz() {
     }
 
     if (quiz.questions[currentQuestion].correct === alternativeSelected) {
+      await playSound(true)
+
       setStatusReply(1)
       setPoints(prevState => prevState + 1)
       handleNextQuestion()
     } else {
+      playSound(false)
       setStatusReply(2)
       shakeAnimation()
     }
 
     setAlternativeSelected(null)
-
-    handleNextQuestion()
   }
 
   function handleStop() {
@@ -176,7 +190,7 @@ export function Quiz() {
   })
 
   const onPan = Gesture.Pan()
-    .activateAfterLongPress(300)
+    .activateAfterLongPress(200)
     .onUpdate(event => {
       const moveToLeft = event.translationX < 0
 
@@ -212,6 +226,7 @@ export function Quiz() {
   return (
     <View style={styles.container}>
       <OverlayFeedback status={statusReply} />
+
       <Animated.View style={fixedProgressBarStyles}>
         <Text style={styles.title}>{quiz.title}</Text>
         <ProgressBar total={quiz.questions.length} current={currentQuestion + 1} />
